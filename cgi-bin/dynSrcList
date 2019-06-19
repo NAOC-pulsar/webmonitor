@@ -1,0 +1,99 @@
+#!/usr/bin/python
+import cgi, os, sys 
+import commands
+import numpy as np
+import ephem
+import datetime
+from numpy import rad2deg
+import cgitb
+import urllib
+cgitb.enable()
+fs = cgi.FieldStorage()
+
+
+minHour = 2
+maxHour = 6
+
+try:
+    maxZA= fs['ZA'].value
+except:
+    maxZA = '40.'
+
+maxAz = 90.0 - np.float64(maxZA) 
+Dawodang=ephem.Observer()
+Dawodang.lat=str(25.6529518158)  # Official parameter
+Dawodang.lon=str(106.856666872)  # Official parameter
+#Dawodang.horizon='-18' # Astronomical twilight uses the value -18 degrees
+Dawodang.horizon= str(maxAz) # =(90deg-Maximum Za)
+Dawodang.elevation = 1096 #m
+Dawodang.date = datetime.datetime.now()
+
+#data = np.genfromtxt('sourcelist.txt', comments='#', usecols=[0,1,2,3,4], 
+        #dtype=[('name', '|S30'), ('period', 'f'), ('DM', 'f'), ('RA', '|S20'), ('DEC', '|S20'), ('project', '|S50'), ('Note', '|S50'), ('contact', '|S20') ] )
+
+def calrisesettime(ra, dec):
+    src = ephem.FixedBody()
+    src._ra = ra
+    src._dec = dec
+    src.compute()
+    trise=Dawodang.previous_rising(src)
+    ttrans=Dawodang.next_transit(src)
+    tset=Dawodang.next_setting(src)
+    return ephem.localtime(trise),ephem.localtime(ttrans),ephem.localtime(tset)
+
+results = []
+with open('sourcelist.txt', 'r') as fo:
+    lines = fo.read().split('\n')
+
+    for line in lines[1:]:
+        items = line.split('\t')
+        items.remove('')
+        items = filter(lambda a: a != '', items)
+
+        if len(items) == 8:
+            name = items[0]
+            period = float(items[1])
+            DM = float(items[2])
+            RA = items[3]
+            Dec = items[4]
+            project = items[5]
+            Note = items[6]
+            contact = items[7]
+
+        rise, trans, sett = calrisesettime(RA, Dec)
+        results.append((name, rise, trans, sett, RA, Dec, project, Note, contact))
+
+sortedres = sorted(results, key=lambda a:(a[2].hour*60+a[2].minute))
+
+fmt = '%H:%M:%S'
+
+
+print "Content-Type: text/html\n"
+print "<html>"
+print "<title>Dynamic Source List</title>"
+print "<meta http-equiv='refresh' content='600'>"
+print "<h2> Display the rise and set time of important sources </h2>"
+
+#print '''th {
+  #text-align: left;
+  #}'''
+print '<table style="width:80%; text-align=center" >'
+#print '<table style="border-collapse: collapse" >'
+
+print '<tr>'
+print '<th>name</th> <th>rise</th> <th>trans</th> <th>set</th> <th>RA</th> <th>Dec</th> <th>project</th> <th>Note</th> <th>contact</th>'
+print '</tr>'
+for res in sortedres:
+    print '<tr>'
+    risetime = res[1].hour + res[1].minute/60.
+    settime = res[3].hour + res[3].minute/60.
+    if risetime < (minHour-1): 
+        print '<td style="background-color:green">%s</td> <td style="background-color:green">%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s<td>  <td>%s</td> <td>%s</td> </font>' % (res[0], res[1].strftime(fmt), res[2].strftime(fmt), res[3].strftime(fmt), res[4], res[5], res[6], res[7], res[8]) 
+    elif settime > (maxHour+1):
+        print '<td style="background-color:green">%s</td> <td>%s</td> <td>%s</td> <td style="background-color:green">%s</td> <td>%s</td> <td>%s</td> <td>%s<td>  <td>%s</td> <td>%s</td> </font>' % (res[0], res[1].strftime(fmt), res[2].strftime(fmt), res[3].strftime(fmt), res[4], res[5], res[6], res[7], res[8]) 
+    else:
+        print '<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s<td>  <td>%s</td> <td>%s</td> ' % (res[0], res[1].strftime(fmt), res[2].strftime(fmt), res[3].strftime(fmt), res[4], res[5], res[6], res[7], res[8]) 
+    print '</tr>'
+
+print '</table>'
+print "</html>"

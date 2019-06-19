@@ -1,0 +1,35 @@
+#name		period(ms)	DM	RA		DEC		project		Note						contact
+19C25		5.98263		21.8	9:24:25		61:02:58	MSP		Confirmed					MiaoCC
+19C26		2.4156631	157.75	22:05:29	60:14:43	MSP		Not Confirmed					MiaoCC
+C69		30.72		24.5	6:31:40		41:42:58	MSP		Confirmed					MiaoCC
+C63		6.433376	17.8	15:55:49	39:36:00	MSP		Not Confirmed					MiaoCC
+C55		30.47		28.5	12:42:59	39:46:00	MSP		Not Confirmed					MiaoCC
+19C24		3.719		17.4	14:37:39	30:55:07	MSP		Not Confirmed					MiaoCC
+19C22		6.0395		18	22:04:33	9:45:07		MSP		Not Confirmed					MiaoCC
+19C17		6.8201293	65	20:16:38	7:00:00		MSP		Not Confirmed					MiaoCC
+19C4		6.4		53	19:29:18	1:29:36		MSP		Not Confirmed					MiaoCC
+19C3		3.7		11	23:55:53	0:49:56		MSP		Not Confirmed					MiaoCC
+19C2		4.4		70	17:54:32	0:25:12		MSP		Not Confirmed					MiaoCC
+C8		5.173005	19.2	2:03:32		-01:50:13	MSP		Confirmed					MiaoCC
+19C14		4.14618		159	18:10:51	-06:15:00	MSP		Not Confirmed					MiaoCC
+19C16		3.442342	142	18:53:19	-06:20:00	MSP		Not Confirmed					MiaoCC
+19C15		3.898904	203	18:09:52	-06:42:35	MSP		Not Confirmed					MiaoCC
+19C30		5.28896		39.48	19:12:29	-12:15:26	MSP		Not Confirmed					MiaoCC
+19C31		2.369371	39.2	22:38:40	-12:20:38	MSP		Not Confirmed					MiaoCC
+19C27		2.5640559	96.5	17:59:45	-12:42:44	MSP		Not Confirmed					MiaoCC
+19C29		3.1509898	95.9	17:59:48	-12:47:22	MSP		Not Confirmed					MiaoCC
+19C28		5.787807	22.94	20:32:27	-12:53:43	MSP		Not Confirmed					MiaoCC
+J0941+45	2714		17.7	9:41:54		+45:42:40	SlowPSR		Propose Time 4h					ZhuWW
+J2053+47	4907		331	20:53:03	+47:21:26	SlowPSR		Propose Time 1h					ZhuWW
+J1945+12	4745		95	19:45:16	+12:11:36.8	SlowPSR		Propose Time 1h					ZhuWW
+J0752-0820	5210		32.7	7:52:50		-08:20:37.5	SlowPSR		Propose Time 1h					ZhuWW
+J2112+41	4064.2		128	21:12:35	+40:59:54	SlowPSR		Propose Time 1h					ZhuWW
+J1860+42	4341.2		66	18:59:53	+42:21:07	SlowPSR		Propose Time 1h					ZhuWW
+J2214-07	4636.3		13.4	22:14:19	-07:16:26.5	SlowPSR		Propose Time 2h					ZhuWW
+J0250+5854	23535.0		45.2	2:50:18		+58:54:01.3	SlowPSR		Propose Time 4h					ZhuWW
+J1847-0130	6707		667	18:47:35	-01:30:46	SlowPSR		Propose Time 1h					ZhuWW
+J1858+0241	4693		336	18:58:54	+02:41:38	SlowPSR		Propose Time 1h					ZhuWW
+J1901+0511	4600		410	19:01:43	+05:11:00.2	SlowPSR		Propose Time 1h					ZhuWW
+J1956+07	5012		61.3	19:56:35	7:16:00		SlowPSR		Propose Time 1h					ZhuWW
+C31		863.911		390	19:25:19	-06:42:52.2	HighDM		Propose Time 1h 				WangP
+19C20		557.75		92.8	23:07:24	-05:58:30	HighDM		Propose Time 1h 				WangP
