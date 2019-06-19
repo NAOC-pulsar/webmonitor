@@ -15,7 +15,7 @@ minHour = 2
 maxHour = 6
 
 try:
-    maxZA= fs['ZA'].value
+    maxZA= fs['zenith'].value
 except:
     maxZA = '40.'
 
