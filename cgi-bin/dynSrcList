@@ -18,6 +18,10 @@ try:
     maxZA= fs['zenith'].value
 except:
     maxZA = '40.'
+try:
+    sproject = fs['project'].value
+except:
+    sproject = ''
 
 maxAz = 90.0 - np.float64(maxZA) 
 Dawodang=ephem.Observer()
@@ -47,7 +51,7 @@ with open('sourcelist.txt', 'r') as fo:
 
     for line in lines[1:]:
         items = line.split('\t')
-        items.remove('')
+        #items.remove('')
         items = filter(lambda a: a != '', items)
 
         if len(items) == 8:
@@ -60,10 +64,14 @@ with open('sourcelist.txt', 'r') as fo:
             Note = items[6]
             contact = items[7]
 
-        rise, trans, sett = calrisesettime(RA, Dec)
-        results.append((name, rise, trans, sett, RA, Dec, project, Note, contact))
+            rise, trans, sett = calrisesettime(RA, Dec)
+            if sproject == '':
+                results.append((name, rise, trans, sett, RA, Dec, project, Note, contact))
+            else:
+                if project == sproject:
+                    results.append((name, rise, trans, sett, RA, Dec, project, Note, contact))
 
-sortedres = sorted(results, key=lambda a:(a[2].hour*60+a[2].minute))
+sortedres = sorted(results, key=lambda a:(a[1].hour*60+a[1].minute))
 
 fmt = '%H:%M:%S'
 
@@ -73,23 +81,31 @@ print "<html>"
 print "<title>Dynamic Source List</title>"
 print "<meta http-equiv='refresh' content='600'>"
 print "<h2> Display the rise and set time of important sources </h2>"
+print '''
+<style>
+table {
+text-align: left;
+}
+</style>
+'''
 
 #print '''th {
   #text-align: left;
   #}'''
-print '<table style="width:80%; text-align=center" >'
+print '<table align="left" style="width:80%" >'
 #print '<table style="border-collapse: collapse" >'
 
 print '<tr>'
 print '<th>name</th> <th>rise</th> <th>trans</th> <th>set</th> <th>RA</th> <th>Dec</th> <th>project</th> <th>Note</th> <th>contact</th>'
 print '</tr>'
+
 for res in sortedres:
     print '<tr>'
     risetime = res[1].hour + res[1].minute/60.
     settime = res[3].hour + res[3].minute/60.
-    if risetime < (minHour-1): 
+    if risetime < (minHour - 10./60) or risetime > maxHour: 
         print '<td style="background-color:green">%s</td> <td style="background-color:green">%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s<td>  <td>%s</td> <td>%s</td> </font>' % (res[0], res[1].strftime(fmt), res[2].strftime(fmt), res[3].strftime(fmt), res[4], res[5], res[6], res[7], res[8]) 
-    elif settime > (maxHour+1):
+    elif settime > (maxHour+10./60) or settime < minHour:
         print '<td style="background-color:green">%s</td> <td>%s</td> <td>%s</td> <td style="background-color:green">%s</td> <td>%s</td> <td>%s</td> <td>%s<td>  <td>%s</td> <td>%s</td> </font>' % (res[0], res[1].strftime(fmt), res[2].strftime(fmt), res[3].strftime(fmt), res[4], res[5], res[6], res[7], res[8]) 
     else:
         print '<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s<td>  <td>%s</td> <td>%s</td> ' % (res[0], res[1].strftime(fmt), res[2].strftime(fmt), res[3].strftime(fmt), res[4], res[5], res[6], res[7], res[8]) 

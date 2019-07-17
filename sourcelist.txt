@@ -19,17 +19,11 @@ C8		5.173005	19.2	2:03:32		-01:50:13	MSP		Confirmed					MiaoCC
 19C27		2.5640559	96.5	17:59:45	-12:42:44	MSP		Not Confirmed					MiaoCC
 19C29		3.1509898	95.9	17:59:48	-12:47:22	MSP		Not Confirmed					MiaoCC
 19C28		5.787807	22.94	20:32:27	-12:53:43	MSP		Not Confirmed					MiaoCC
-J0941+45	2714		17.7	9:41:54		+45:42:40	SlowPSR		Propose Time 4h					ZhuWW
-J2053+47	4907		331	20:53:03	+47:21:26	SlowPSR		Propose Time 1h					ZhuWW
-J1945+12	4745		95	19:45:16	+12:11:36.8	SlowPSR		Propose Time 1h					ZhuWW
-J0752-0820	5210		32.7	7:52:50		-08:20:37.5	SlowPSR		Propose Time 1h					ZhuWW
-J2112+41	4064.2		128	21:12:35	+40:59:54	SlowPSR		Propose Time 1h					ZhuWW
-J1860+42	4341.2		66	18:59:53	+42:21:07	SlowPSR		Propose Time 1h					ZhuWW
-J2214-07	4636.3		13.4	22:14:19	-07:16:26.5	SlowPSR		Propose Time 2h					ZhuWW
-J0250+5854	23535.0		45.2	2:50:18		+58:54:01.3	SlowPSR		Propose Time 4h					ZhuWW
-J1847-0130	6707		667	18:47:35	-01:30:46	SlowPSR		Propose Time 1h					ZhuWW
-J1858+0241	4693		336	18:58:54	+02:41:38	SlowPSR		Propose Time 1h					ZhuWW
-J1901+0511	4600		410	19:01:43	+05:11:00.2	SlowPSR		Propose Time 1h					ZhuWW
-J1956+07	5012		61.3	19:56:35	7:16:00		SlowPSR		Propose Time 1h					ZhuWW
 C31		863.911		390	19:25:19	-06:42:52.2	HighDM		Propose Time 1h 				WangP
 19C20		557.75		92.8	23:07:24	-05:58:30	HighDM		Propose Time 1h 				WangP
+19C34		0.003116	34.43	16:02:07	-10:52:49	MSP		Not Confirmed					MiaoCC
+19C35		0.003177	30.79	20:03:53	-09:37:20	MSP		Not Confirmed					MiaoCC
+19C38		0.025048	126.48	19:12:07	-09:53:34	MSP		Not Confirmed					MiaoCC
+19C41		0.004314	44.81	18:52:11	-13:10:10	MSP		Not Confirmed					MiaoCC
+19C46		0.004227	135.00	18:13:12	-08:52:17	MSP		Not Confirmed					MiaoCC
+19C48		0.038969	202.06	18:07:24	-08:50:50	MSP		Not Confirmed					MiaoCC
